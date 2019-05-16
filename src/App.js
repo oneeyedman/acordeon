@@ -68,7 +68,6 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      isVisible: false,
       cid: 'c01'
     }
 
@@ -81,12 +80,10 @@ class App extends React.Component {
 
       if (id === prevState.cid) {
         return {
-          isVisible: !prevState.isVisible,
-          cid: id
+          cid: null
         }
       } else {
         return {
-          isVisible: true,
           cid: id
          }
       }
@@ -99,11 +96,11 @@ class App extends React.Component {
         {data.palettes.map((item, index) => {
           return (
             <Collapsible 
+              key={`c0${index}`}
               id={`c0${index}`}
               title={item.name}
               fromTvShow={item.from}
               cid={this.state.cid}
-              isVisible={this.state.isVisible}
               collapsibleAction={this.handleSingleCollapsible}
             />
           );
